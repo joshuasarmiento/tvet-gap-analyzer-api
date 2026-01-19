@@ -21,7 +21,7 @@
     "experimentalSpecifierResolution": "node"
   },
   "include": [
-    "api/**/*",
+    "api/**/*", "index.ts",
   ],
   "exclude": [
     "node_modules",

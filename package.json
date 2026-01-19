@@ -1,8 +1,7 @@
 {
   "name": "tvet-backend",
   "scripts": {
-    "dev": "tsx watch api/index.ts",
-    "start": "node dist/api/index.js",
+    "dev": "tsx watch index.ts",
     "build": "tsc"
   },
   "dependencies": {

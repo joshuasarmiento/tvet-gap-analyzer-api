@@ -10,8 +10,7 @@ const app = new Hono().basePath('/api');
 app.use('*', secureHeaders());
 app.use('/api/*', cors({
     origin: [
-      'https://skill-gap-ph.vercel.app', 
-      'https://skill-gap-frontend.vercel.app', // Added your other possible domain
+      'https://tvet-gap-analyzer-api.vercel.app',
       'http://localhost:3000', 
       'http://localhost:5173'
     ],
@@ -98,8 +97,7 @@ app.get('/analyze', async (c) => {
 export const GET = handle(app);
 export const POST = handle(app);
 
-const port = 3000
-console.log(`🚀 Node Server running on http://localhost:${port}`)
-serve({ fetch: app.fetch, port })
-
+// const port = 3000
+// console.log(`🚀 Node Server running on http://localhost:${port}`)
+// serve({ fetch: app.fetch, port })
 // export default { port: 3000, fetch: app.fetch };
