@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
+import { handle } from 'hono/vercel';
 import * as XLSX from 'xlsx';
 
 const app = new Hono();
@@ -80,4 +81,8 @@ app.get('/api/analyze', async (c) => {
   }
 });
 
-export default { port: 3000, fetch: app.fetch };
+// Export for Vercel
+export const GET = handle(app);
+export const POST = handle(app);
+
+// export default { port: 3000, fetch: app.fetch };
