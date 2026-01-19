@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { handle } from 'hono/vercel';
+import { serve } from '@hono/node-server';
 import * as XLSX from 'xlsx';
 
 const app = new Hono().basePath('/api');
@@ -85,5 +86,9 @@ app.get('/analyze', async (c) => {
 // Export for Vercel
 export const GET = handle(app);
 export const POST = handle(app);
+
+const port = 3000
+console.log(`🚀 Node Server running on http://localhost:${port}`)
+serve({ fetch: app.fetch, port })
 
 // export default { port: 3000, fetch: app.fetch };

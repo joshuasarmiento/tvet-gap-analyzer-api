@@ -1,15 +1,19 @@
 {
   "name": "tvet-backend",
   "scripts": {
-    "dev": "bun --hot api/index.ts",
-    "start": "bun api/index.ts",
-    "build": "bun build api/index.ts --outdir public --target bun"
+    "dev": "tsx watch api/index.ts",
+    "start": "node dist/api/index.js",
+    "build": "tsc"
   },
   "dependencies": {
+    "@hono/node-server": "^1.19.9",
     "hono": "latest",
     "xlsx": "latest"
   },
   "devDependencies": {
-    "@types/node": "latest"
+    "@types/node": "latest",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
