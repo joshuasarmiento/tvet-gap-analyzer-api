@@ -2,11 +2,22 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { handle } from 'hono/vercel';
 import { serve } from '@hono/node-server';
+import { secureHeaders } from 'hono/secure-headers';
 import * as XLSX from 'xlsx';
 
 const app = new Hono().basePath('/api');
 
-app.use('*', cors({ origin: '*' }));
+app.use('*', secureHeaders());
+app.use('/api/*', cors({
+    origin: [
+      'https://skill-gap-ph.vercel.app', 
+      'https://skill-gap-frontend.vercel.app', // Added your other possible domain
+      'http://localhost:3000', 
+      'http://localhost:5173'
+    ],
+    allowMethods: ['GET', 'OPTIONS'], // Restrict to only what you need
+    maxAge: 600,
+}));
 
 // Enhanced Industry Demand Multipliers based on DOLE 2024 Labor Market Trends
 const SECTOR_DEMAND_WEIGHTS: Record<string, number> = {
