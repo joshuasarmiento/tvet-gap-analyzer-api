@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "bun --hot api/index.ts",
     "start": "bun api/index.ts",
-    "build": "bun build api/index.ts --outdir dist --target bun"
+    "build": "bun build api/index.ts --outdir public --target bun"
   },
   "dependencies": {
     "hono": "latest",
