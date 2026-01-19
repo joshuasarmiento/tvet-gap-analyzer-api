@@ -8,7 +8,7 @@ import * as XLSX from 'xlsx';
 const app = new Hono().basePath('/api');
 
 app.use('*', secureHeaders());
-app.use('/*', cors({
+app.use('*', cors({
     origin: [
       'https://tvet-gap-analyzer.vercel.app',
       'http://localhost:5173'
