@@ -10,6 +10,7 @@ const app = new Hono().basePath('/api');
 app.use('*', secureHeaders());
 app.use('/api/*', cors({
     origin: [
+      "https://tvet-gap-analyzer-api.vercel.app",
       'https://tvet-gap-analyzer.vercel.app',
       'http://localhost:3000', 
       'http://localhost:5173'
