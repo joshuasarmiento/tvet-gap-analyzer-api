@@ -10,5 +10,5 @@
     "rootDir": "./api"
   },
   "include": ["api/**/*"],
-  "exclude": ["node_modules","public"]
+  "exclude": ["node_modules"]
 }

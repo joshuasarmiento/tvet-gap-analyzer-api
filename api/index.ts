@@ -3,7 +3,8 @@ import { cors } from 'hono/cors';
 import { handle } from 'hono/vercel';
 import * as XLSX from 'xlsx';
 
-const app = new Hono();
+const app = new Hono().basePath('/api');
+
 app.use('*', cors({ origin: '*' }));
 
 // Enhanced Industry Demand Multipliers based on DOLE 2024 Labor Market Trends
@@ -29,7 +30,7 @@ const tesdaFiles = [
   /* 8 */ '9_TESDA_2024 Number of Registered Programs and TVET Provider by Sector.xlsx',
 ] as const;
 
-app.get('/api/analyze', async (c) => {
+app.get('/analyze', async (c) => {
   const fileIndex = Number(c.req.query('file') ?? '0');
   const url = `https://www.tesda.gov.ph/Uploads/File/TVET%20Statistics/Various/2024/${tesdaFiles[fileIndex]}`;
 
