@@ -10,12 +10,10 @@ const app = new Hono().basePath('/api');
 app.use('*', secureHeaders());
 app.use('/api/*', cors({
     origin: [
-      "https://tvet-gap-analyzer-api.vercel.app",
       'https://tvet-gap-analyzer.vercel.app',
-      'http://localhost:3000', 
       'http://localhost:5173'
     ],
-    allowMethods: ['GET', 'OPTIONS'], // Restrict to only what you need
+    allowMethods: ['GET', 'OPTIONS'], 
     maxAge: 600,
 }));
 
@@ -87,7 +85,9 @@ app.get('/analyze', async (c) => {
         status: (supply / demand) < 0.5 ? 'Critical Shortage' : 'Moderate'
       };
     }).filter(Boolean);
-
+    
+    // CACHING: Added for production performance
+    c.header('Cache-Control', 's-maxage=3600, stale-while-revalidate');
     return c.json(results);
   } catch (err: any) {
     return c.json({ error: "Sync failed: " + err.message }, 500);
