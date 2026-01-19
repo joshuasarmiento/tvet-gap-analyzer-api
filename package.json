@@ -1,9 +1,9 @@
 {
   "name": "tvet-backend",
   "scripts": {
-    "dev": "bun --hot api/index.ts",
-    "start": "bun api/index.ts",
-    "build": "bun build api/index.ts --outdir dist --target bun"
+    "dev": "bun --hot index.ts",
+    "start": "bun index.ts",
+    "build": "bun build index.ts --outdir dist --target bun"
   },
   "dependencies": {
     "hono": "latest",
