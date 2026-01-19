@@ -1,0 +1,15 @@
+{
+  "name": "tvet-backend",
+  "scripts": {
+    "dev": "bun --hot src/index.ts",
+    "start": "bun src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun"
+  },
+  "dependencies": {
+    "hono": "latest",
+    "xlsx": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest"
+  }
+}
